@@ -37,7 +37,7 @@ export const App = () => {
         <Route
           path='/login'
           element={
-            <ProtectedRoute isAuth>
+            <ProtectedRoute requireAuth>
               <Login />
             </ProtectedRoute>
           }
@@ -45,7 +45,7 @@ export const App = () => {
         <Route
           path='/register'
           element={
-            <ProtectedRoute isAuth>
+            <ProtectedRoute requireAuth>
               <Register />
             </ProtectedRoute>
           }
@@ -53,7 +53,7 @@ export const App = () => {
         <Route
           path='/forgot-password'
           element={
-            <ProtectedRoute isAuth>
+            <ProtectedRoute requireAuth>
               <ForgotPassword />
             </ProtectedRoute>
           }
@@ -61,7 +61,7 @@ export const App = () => {
         <Route
           path='/reset-password'
           element={
-            <ProtectedRoute isAuth>
+            <ProtectedRoute requireAuth>
               <ResetPassword />
             </ProtectedRoute>
           }

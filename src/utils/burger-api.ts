@@ -177,8 +177,8 @@ export const loginUserApi = (data: TLoginData) =>
     .then((res) => checkResponse<TAuthResponse>(res))
     .then((data) => {
       if (data?.success) {
-        getCookie('accessToken');
-        localStorage.getItem('refreshToken');
+        localStorage.setItem('refreshToken', data.refreshToken);
+        setCookie('accessToken', data.accessToken);
         return data;
       }
       return Promise.reject(data);
@@ -240,4 +240,7 @@ export const logoutApi = () =>
     body: JSON.stringify({
       token: localStorage.getItem('refreshToken')
     })
-  }).then((res) => checkResponse<TServerResponse<{}>>(res));
+  }).then((res) => {
+    setCookie('accessToken', '');
+    return res;
+  });
