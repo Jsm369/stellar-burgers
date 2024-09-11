@@ -4,7 +4,8 @@ import {
   ingredientsSlice,
   ordersSlice,
   newOrderSlice,
-  feedsSlice
+  feedsSlice,
+  burgerConstructorSlice
 } from '@slices';
 
 export const rootReducer = combineReducers({
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
   ingredients: ingredientsSlice.reducer,
   orders: ordersSlice.reducer,
   newOrder: newOrderSlice.reducer,
-  feeds: feedsSlice.reducer
+  feeds: feedsSlice.reducer,
+  burgerConstructor: burgerConstructorSlice.reducer
 });

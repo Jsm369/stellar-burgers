@@ -16,14 +16,14 @@ const initialState: NewOrderState = {
 
 export const newOrderThunk = createAsyncThunk(
   'order/createOrder',
-  async (data: []) => orderBurgerApi(data)
+  async (data: string[]) => orderBurgerApi(data)
 );
 
 export const newOrderSlice = createSlice({
   name: 'newOrder',
   initialState,
   reducers: {
-    resetOrder: (state) => initialState
+    resetOrder: () => initialState
   },
   extraReducers: (builder) => {
     builder
@@ -39,3 +39,5 @@ export const newOrderSlice = createSlice({
       });
   }
 });
+
+export const { resetOrder } = newOrderSlice.actions;
