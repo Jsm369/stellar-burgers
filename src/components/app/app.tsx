@@ -40,7 +40,7 @@ export const App = () => {
   return (
     <div className={styles.app}>
       <AppHeader />
-      <Routes location={location.state?.background}>
+      <Routes location={location.state?.background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
         <Route
@@ -103,7 +103,7 @@ export const App = () => {
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route path='/feed/:number' element={<OrderInfo />} />
       </Routes>
-      {location && (
+      {location.state?.background && (
         <Routes>
           <Route
             path='/feed/:number'
