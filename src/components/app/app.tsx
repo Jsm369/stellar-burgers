@@ -103,7 +103,7 @@ export const App = () => {
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route path='/feed/:number' element={<OrderInfo />} />
       </Routes>
-      {location.state?.background && (
+      {location && (
         <Routes>
           <Route
             path='/feed/:number'
