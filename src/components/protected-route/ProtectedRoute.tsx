@@ -8,27 +8,10 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const ProtectedRoute = ({
-  children,
-  requireAuth = false,
-  notRequireAuth = false
-}: Props) => {
+export const ProtectedRoute = ({ children, requireAuth = false }: Props) => {
   const { isInit } = useSelector((store: RootState) => store.user);
   const location = useLocation();
 
-  // if (requireAuth && !isInit) {
-  //   return <Navigate to='/login' state={{ from: location }} replace />;
-  // }
-
-  // if (notRequireAuth && isInit) {
-  //   return <Navigate to='/' replace />;
-  // }
-
-  // if (notRequireAuth && !isInit) {
-  //   return children;
-  // }
-
-  // return children;
   if (!requireAuth && !isInit) {
     return <Navigate replace to='/login' state={{ from: location }} />;
   }
