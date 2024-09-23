@@ -1,0 +1,16 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  color: #4c4cff;
+  text-decoration: none;
+  font-family: 'Jet Brains Mono';
+  font-size: 24px;
+  line-height: 32px;
+  text-decoration: underline;
+}
