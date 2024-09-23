@@ -18,7 +18,7 @@ export interface UserState {
   error: string | null | undefined;
 }
 
-const initialState: UserState = {
+export const userInitialState: UserState = {
   isInit: false,
   isLoading: false,
   user: {
@@ -53,7 +53,7 @@ export const updateUserThunk = createAsyncThunk(
 
 export const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: userInitialState,
   reducers: {},
   extraReducers: (builder) => {
     // Получение Юзера

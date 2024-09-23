@@ -8,7 +8,7 @@ interface NewOrderState {
   error: string | null | undefined;
 }
 
-const initialState: NewOrderState = {
+export const newOrderInitialState: NewOrderState = {
   request: false,
   orderData: null,
   error: null
@@ -21,9 +21,9 @@ export const newOrderThunk = createAsyncThunk(
 
 export const newOrderSlice = createSlice({
   name: 'newOrder',
-  initialState,
+  initialState: newOrderInitialState,
   reducers: {
-    resetOrder: () => initialState
+    resetOrder: () => newOrderInitialState
   },
   extraReducers: (builder) => {
     builder

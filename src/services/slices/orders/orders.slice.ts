@@ -7,7 +7,7 @@ interface OrdersState {
   isLoading: boolean;
 }
 
-const initialState: OrdersState = {
+export const ordersInitialState: OrdersState = {
   orders: [],
   isLoading: true
 };
@@ -18,7 +18,7 @@ export const getOrdersThunk = createAsyncThunk('orders/ofUsers', async () =>
 
 export const ordersSlice = createSlice({
   name: 'orders',
-  initialState,
+  initialState: ordersInitialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
