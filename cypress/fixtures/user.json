@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "accessToken": "1111",
+  "refreshToken": "3444",
+  "user": {
+      "email": "test@yandex.ru",
+      "name": "testUser"
+  }
+}

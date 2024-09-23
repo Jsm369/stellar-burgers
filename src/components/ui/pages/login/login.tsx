@@ -35,17 +35,24 @@ export const LoginUI: FC<LoginUIProps> = ({
               error={false}
               errorText=''
               size='default'
+              data-cy='email-input'
             />
           </div>
           <div className='pb-6'>
             <PasswordInput
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              data-cy='password-input'
               name='password'
             />
           </div>
           <div className={`pb-6 ${styles.button}`}>
-            <Button type='primary' size='medium' htmlType='submit'>
+            <Button
+              type='primary'
+              size='medium'
+              htmlType='submit'
+              data-cy='login-button'
+            >
               Войти
             </Button>
           </div>
