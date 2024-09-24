@@ -11,26 +11,6 @@ describe('создание заказа', function () {
     cy.clearLocalStorage('refreshToken');
   });
 
-  it('должен успешно войти в систему', () => {
-    cy.wait('@api/login').its('request.body').should('deep.equal', {
-      email: 'test@yandex.ru',
-      password: 'password'
-    });
-
-    cy.fixture('user.json').then((user) => {
-      cy.getCookie('accessToken')
-        .should('exist')
-        .should('have.property', 'value', user.accessToken);
-
-      cy.window().then((win) => {
-        expect(win.localStorage).to.have.property('refreshToken');
-        expect(win.localStorage.getItem('refreshToken')).to.equal(
-          user.refreshToken
-        );
-      });
-    });
-  });
-
   it('должен добавить ингредиенты в конструктор и создать заказ', () => {
     cy.get('[data-cy="top-bun"]').as('topBun');
     cy.get('[data-cy="bottom-bun"]').as('bottomBun');

@@ -6,7 +6,10 @@ import { RootState, useSelector } from '../../services/store';
 import { getOrderByNumberApi } from '@api';
 import { useParams } from 'react-router-dom';
 
-export const OrderInfo: FC = () => {
+export const OrderInfo: FC<{ isModal?: boolean; numberTitle?: string }> = ({
+  isModal,
+  numberTitle
+}) => {
   /** TODO: взять переменные orderData и ingredients из стора */
   const orderData: TOrder = {
     createdAt: '',
@@ -76,5 +79,11 @@ export const OrderInfo: FC = () => {
     return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
+  return (
+    <OrderInfoUI
+      isModal={isModal}
+      numberTitle={`#${order.number}`}
+      orderInfo={orderInfo}
+    />
+  );
 };

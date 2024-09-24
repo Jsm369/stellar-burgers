@@ -5,6 +5,11 @@ describe('constructor', function () {
     login();
   });
 
+  afterEach(() => {
+    cy.clearCookie('accessToken');
+    cy.clearLocalStorage('refreshToken');
+  });
+
   it('должен добавлять ингредиенты в конструктор', () => {
     cy.get('[data-cy="top-bun"]').as('topBun');
     cy.get('[data-cy="bottom-bun"]').as('bottomBun');
@@ -13,19 +18,19 @@ describe('constructor', function () {
     cy.fixture('ingredients.json').then(
       (ingredients: { data: Array<{ _id: string; name: string }> }) => {
         for (let i = 0; i < 3; i++) {
-          cy.get(`[data-cy="ingredient-${ingredients.data[i]._id}"]`)
-            .find('[type="button"]')
-            .click();
-        }
+          const ingredientName = ingredients.data[i].name;
+          const ingredientSelector = `[data-cy="ingredient-${ingredients.data[i]._id}"]`;
 
-        cy.get('@topBun').should('contain', ingredients.data[0].name);
-        cy.get('@bottomBun').should('contain', ingredients.data[0].name);
+          cy.get('@ingredientsList').should('not.contain', ingredientName);
 
-        for (let i = 1; i < 3; ++i) {
-          cy.get('@ingredientsList').should(
-            'contain',
-            ingredients.data[i].name
-          );
+          cy.get(ingredientSelector).find('[type="button"]').click();
+
+          if (i === 0) {
+            cy.get('@topBun').should('contain', ingredientName);
+            cy.get('@bottomBun').should('contain', ingredientName);
+          } else {
+            cy.get('@ingredientsList').should('contain', ingredientName);
+          }
         }
       }
     );
