@@ -10,7 +10,7 @@ interface FeedsState {
   error: string | null | undefined;
 }
 
-const initialState: FeedsState = {
+export const feedsInitialState: FeedsState = {
   orders: [],
   total: 0,
   totalToday: 0,
@@ -24,7 +24,7 @@ export const getFeedsThunk = createAsyncThunk('orders/getAll', async () =>
 
 export const feedsSlice = createSlice({
   name: 'feeds',
-  initialState,
+  initialState: feedsInitialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

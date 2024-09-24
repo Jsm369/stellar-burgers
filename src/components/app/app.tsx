@@ -109,7 +109,7 @@ export const App = () => {
             path='/feed/:number'
             element={
               <Modal title={`#${orderNumber}`} onClose={() => navigate(-1)}>
-                <OrderInfo />
+                <OrderInfo isModal />
               </Modal>
             }
           />
@@ -117,7 +117,7 @@ export const App = () => {
             path='/ingredients/:id'
             element={
               <Modal title='Детали ингредиента' onClose={() => navigate(-1)}>
-                <IngredientDetails />
+                <IngredientDetails isModal />
               </Modal>
             }
           />
@@ -126,7 +126,7 @@ export const App = () => {
             element={
               <Modal title={`#${orderNumber}`} onClose={() => navigate(-1)}>
                 <ProtectedRoute>
-                  <OrderInfo />
+                  <OrderInfo isModal />
                 </ProtectedRoute>
               </Modal>
             }

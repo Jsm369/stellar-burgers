@@ -4,7 +4,7 @@ import { IngredientDetailsUI } from '../ui/ingredient-details';
 import { RootState, useSelector } from '../../services/store';
 import { useParams } from 'react-router-dom';
 
-export const IngredientDetails: FC = () => {
+export const IngredientDetails: FC<{ isModal?: boolean }> = ({ isModal }) => {
   /** TODO: взять переменную из стора */
   const { ingredients } = useSelector((store: RootState) => store.ingredients);
 
@@ -18,5 +18,7 @@ export const IngredientDetails: FC = () => {
     return <Preloader />;
   }
 
-  return <IngredientDetailsUI ingredientData={ingredientData} />;
+  return (
+    <IngredientDetailsUI isModal={isModal} ingredientData={ingredientData} />
+  );
 };

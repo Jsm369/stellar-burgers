@@ -6,7 +6,7 @@ interface ConstructorState {
   ingredients: TConstructorIngredient[];
 }
 
-const initialState: ConstructorState = {
+export const burgerConstructorInitialState: ConstructorState = {
   bun: null,
   ingredients: []
 };
@@ -15,7 +15,7 @@ const generateId = () => `${Date.now()}-${Math.random()}`;
 
 export const burgerConstructorSlice = createSlice({
   name: 'burger-constructor',
-  initialState,
+  initialState: burgerConstructorInitialState,
   reducers: {
     addItem: {
       reducer: (state, action: PayloadAction<TConstructorIngredient>) => {
